@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+    <bean id="config" class="de.knurt.ajajajava.config.Config">
+        <constructor-arg value="./WEB-INF/location_parts" />
+    </bean>
+
+    <bean id="main" class="de.knurt.ajajajava.model.LocationPart">
+        <property name="partName" value="main" />
+    </bean>
+
+    <bean id="javascript" class="de.knurt.ajajajava.model.LocationPart">
+        <property name="partName" value="javascript" />
+    </bean>
+
+    <bean id="info" class="de.knurt.ajajajava.model.LocationPart">
+        <property name="partName" value="info" />
+    </bean>
+
+    <bean id="picture" class="de.knurt.ajajajava.model.LocationPart">
+        <property name="partName" value="picture" />
+    </bean>
+
+    <bean id="locationManager" class="de.knurt.ajajajava.model.manager.LocationManager">
+        <property name="locations">
+            <list>
+                <ref bean="home"/>
+                <ref bean="shop"/>
+                <ref bean="contact"/>
+            </list>
+        </property>
+        <property name="defaultLocation">
+            <ref bean="home" />
+        </property>
+    </bean>
+
+    <bean id="home" class="de.knurt.ajajajava.model.Location">
+        <property name="locationName" value="home" />
+        <property name="locationParts">
+            <list> <!-- ArrayList<model.LocationPart> -->
+                <ref bean="main" />
+                <ref bean="info" />
+                <ref bean="picture" />
+                <ref bean="javascript" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="shop" class="de.knurt.ajajajava.model.Location">
+        <property name="locationName" value="shop" />
+        <property name="locationParts">
+            <list> <!-- ArrayList<model.LocationPart> -->
+                <ref bean="main" />
+                <ref bean="info" />
+                <ref bean="javascript" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="contact" class="de.knurt.ajajajava.model.Location">
+        <property name="locationName" value="contact" />
+        <property name="locationParts">
+            <list> <!-- ArrayList<model.LocationPart> -->
+                <ref bean="main" />
+                <ref bean="picture" />
+            </list>
+        </property>
+    </bean>
+</beans>

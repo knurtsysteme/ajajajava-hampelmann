@@ -1,0 +1,1 @@
+window.alert('shop.js loaded');
